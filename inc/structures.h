@@ -4,7 +4,7 @@
 /*! \file structures.h
 */
 
-#ifdef NVCC
+#ifdef __NVCC__
 #define HOSTDEVICE __host__ __device__ inline
 #else
 #define HOSTDEVICE inline __attribute__((always_inline))

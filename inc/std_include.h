@@ -76,7 +76,7 @@ using namespace std;
 #include "matrix.h"
 #include "structures.h"
 
-#ifdef NVCC
+#ifdef __NVCC__
 #define HOSTDEVICE __host__ __device__ inline
 #else
 #define HOSTDEVICE inline __attribute__((always_inline))
@@ -151,7 +151,7 @@ static void HandleError(cudaError_t err, const char *file, int line)
     {
     //as an additional debugging check, synchronize cuda threads after every kernel call
     #ifdef DEBUGFLAGUP
-    cudaThreadSynchronize();
+    cudaDeviceSynchronize();
     #endif
     if (err != cudaSuccess)
         {

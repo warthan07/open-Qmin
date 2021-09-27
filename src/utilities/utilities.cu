@@ -116,7 +116,7 @@ reduce6(T *g_idata, T *g_odata, unsigned int n)
         // Reduce final warp using shuffle
         for (int offset = warpSize/2; offset > 0; offset /= 2)
         {
-            mySum += __shfl_down(mySum, offset);
+            mySum += __shfl_down_sync(0xffffffff, mySum, offset);
         }
     }
 #else
